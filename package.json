@@ -1,5 +1,5 @@
 {
-  "name": "reviewforge-v1-web", "version": "1.0.0", "private": true, "type": "module",
+  "name": "reviewforge-v1-web", "version": "1.0.0", "private": true, "type": "module", "engines":{"node":">=22.19.0"},
   "scripts": {"build":"node build.mjs", "test":"node --test test/*.test.mjs"},
   "dependencies": {"@earendil-works/pi-agent-core":"1.0.2", "@earendil-works/pi-ai":"1.0.2"},
   "devDependencies": {"esbuild":"0.25.10"}

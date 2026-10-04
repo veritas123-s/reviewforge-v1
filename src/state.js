@@ -32,5 +32,5 @@ export function invalidate(p,agents,id){
   // Gate changes can invalidate roles outside the direct dependency descendants.
   for(const a of agents)if((a.required_gates||[]).length)affected.add(a.agent_id);
   changed=true;while(changed){changed=false;for(const a of agents)if(!affected.has(a.agent_id)&&a.dependencies.some(x=>affected.has(x))){affected.add(a.agent_id);changed=true;}}
-  for(const x of affected){p.tasks[x].state='pending';p.tasks[x].review=null;delete p.tasks[x].output;}p.gates={};return affected;
+  for(const x of affected){p.tasks[x].state='pending';p.tasks[x].review=null;delete p.tasks[x].output;}for(const e of p.experiences)if(affected.has(e.role)){e.validated=false;e.invalidated_at=new Date().toISOString();}p.gates={};return affected;
 }
